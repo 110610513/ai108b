@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, v = 0, g = 0):
-        self.v = v # 輸出值 (f(x))
-        self.g = g # 梯度值 (偏微分)
+        self.v = v 
+        self.g = g 
 
     def __str__(self):
         return 'v:{self.v} g:{self.g}'.format(self=self)
@@ -24,7 +24,7 @@ class Gate:
         x.g += gfx(x.v,y.v) * o.g
         y.g += gfy(x.v,y.v) * o.g
 
-    def adjust(self, step=0.001): # 朝逆梯度的方向走一小步
+    def adjust(self, step=0.001): 
         x, y = self.x, self.y
         x.v -= step*x.g
         y.v -= step*y.g
@@ -50,21 +50,21 @@ class Net:
     def mul (self, x, y):
         return self.op(x, y, lambda x,y:x*y, lambda x,y:y, lambda x,y:x) 
 
-    def forward(self): # 正向傳遞計算結果
+    def forward(self): 
         for gate in self.gates:
             gate.forward()
         return self.o.v
 
-    def backward(self): # 反向傳遞計算梯度 
-        self.o.g = 1 # 設定輸出節點 o 的梯度為 1
-        for gate in reversed(self.gates): # 反向傳遞計算每個節點 Node 的梯度 g
+    def backward(self):  
+        self.o.g = 1 
+        for gate in reversed(self.gates): 
             gate.backward()
 
-    def adjust(self, step=0.01): # 朝逆梯度的方向走一小步
+    def adjust(self, step=0.01): 
         for gate in self.gates:
             gate.adjust(step)
 
-    # 使用 forward-backward 的方式計算梯度的梯度下降法
+    
     def gradient_descendent (self, maxLoops=100, dumpPeriod=1, step=0.01):
         for loop in range(maxLoops):
             energy = self.forward()
