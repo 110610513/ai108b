@@ -19,10 +19,32 @@
  
 先前所提的是敵對雙方各走一步的變化，假設電腦能夠不斷深入思考，直到分出勝負為止，便可以完全解答棋戲的理論值，也就是先下必勝、必敗或和的結論。
 
-![圖片支援]()
+![圖片支援](180786f1f490950ca6d7790df5550443bcd9bb7da89acfa65c9e2f71b2425161_1000_673.jpg)
+
 # 極大極小演算法
+
+Minimax演算法（亦稱 MinMax or MM[1]）又名極小化極大演算法，是一種找出失敗的最大可能性中的最小值的演算法。
 
 對一些比較簡單的棋戲，像圈叉井字遊戲（Tic-Tac-Toe）或三角殺棋（Triangular Nim），雖然可以利用極小極大演算法完全解答，但是對於象棋、西洋棋
 或圍棋等這些變化較複雜的對局遊戲，如果反覆擴展對局樹，節點數目會呈現幾何級數的增加，最後無法避免地面臨組合爆滿的困境。為了解決這種困境，1950
 年資訊界大師克勞德．夏農（Claude E. Shannon）就提出有限深度的極小極大演算法。在時間許可的情況下，思考有限深度的幾手後，就歸納回傳結果。如果
 思考層數越多，結果會更精確，棋力也就更強。
+
+```
+function minimax(node, depth)
+    if node is a terminal node or depth = 0
+        return the heuristic value of node
+    if the adversary is to play at node
+        let α := +∞
+        foreach child of node
+            α := min(α, minimax(child, depth-1))
+    else {we are to play at node}
+        let α := -∞
+        foreach child of node
+            α := max(α, minimax(child, depth-1))
+    return α
+```   
+
+# 資料來源
+[電腦下棋](https://scitechvista.nat.gov.tw/c/sTkf.htm)<br>
+[極大極小演算法文基百科](https://zh.wikipedia.org/wiki/%E6%9E%81%E5%B0%8F%E5%8C%96%E6%9E%81%E5%A4%A7%E7%AE%97%E6%B3%95)
