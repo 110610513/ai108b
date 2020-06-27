@@ -1,6 +1,6 @@
 # 爬山演算法介紹
 爬山演算法是一種從隨機解開始找最佳解的演算法
-
+ˋˋˋ
 Algorithm Hill-Climbing(pi)
   p = pi // 設定粒子 p 為起始粒子 pi
   while not isEnd()
@@ -8,6 +8,6 @@ Algorithm Hill-Climbing(pi)
     if pn.energy()<=p.energy() //能量更低，就接受
       p = pn;
 End Algorithm
-
+ˋˋˋ
 程式來源:
 [老師的上課網站](http://ccckmit.wikidot.com/so:hillclimbing)
