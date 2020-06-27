@@ -9,6 +9,6 @@ Algorithm Hill-Climbing(pi)
       p = pn;
 End Algorithm
 ```
-
+[支援圖片](1528880638-446495441_n.png)
 # 程式來源:
 [老師的上課網站](http://ccckmit.wikidot.com/so:hillclimbing)
